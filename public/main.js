@@ -22,13 +22,13 @@ function myFacebookLogin() {
                         accessToken = response.authResponse.accessToken;
                         console.log('uid: ', uid);
                         console.log('accessToken: ', accessToken);
-                        $.get(`840783929399087?fields=${accessToken}`)
-                            .done(function(data) {
-                                console.log('data: ', data);
-                            })
-                            .fail(function(err) {
-                                console.log('err: ', err);
-                            });
+                        // $.get(`840783929399087?fields=${accessToken}`)
+                        //     .done(function(data) {
+                        //         console.log('data: ', data);
+                        //     })
+                        //     .fail(function(err) {
+                        //         console.log('err: ', err);
+                        //     });
                     } else if (response.status === 'not_authorized') {
                         // the user is logged in to Facebook,
                         // but has not authenticated your app
