@@ -14,12 +14,11 @@ function myFacebookLogin() {
             message: 'Hello, world!'
         },
         function(response) {
-            if (response && !response.error) {
-                console.log('response.error: ', response.error);
-                console.log('response: ', response);
-            }
+            if (response.error) return console.log('response.error: ', response.error);
+            console.log('response: ', response);
         }
     );
+
 };
 
 
