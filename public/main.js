@@ -9,15 +9,26 @@ function init() {
 
 function myFacebookLogin() {
     console.log("Clicked");
-    FB.api('/840783929399087/feed',
-        'post', {
-            message: 'Hello, world!'
-        },
-        function(response) {
-            if (response.error) return console.log('response.error: ', response.error);
-            console.log('response: ', response);
+    FB.login(function(response) {
+        if (response.authResponse) {
+            console.log('Welcome!  Fetching your information.... ');
+            FB.api('/me', function(response) {
+                console.log('Good to see youuuu, ' + response.name + '.');
+            });
+        } else {
+            console.log('User cancelled login or did not fully authorize.');
         }
-    );
+    });
+
+    // FB.api('/840783929399087/feed',
+    //     'post', {
+    //         message: 'Hello, world!'
+    //     },
+    //     function(response) {
+    //         if (response.error) return console.log('response.error: ', response.error);
+    //         console.log('response: ', response);
+    //     }
+    // );
 
 };
 
