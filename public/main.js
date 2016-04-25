@@ -14,8 +14,31 @@ function myFacebookLogin() {
             console.log('Welcome!  Fetching your information.... ');
             FB.api('/me', function(response) {
                 console.log('Good to see youuuu, ' + response.name + '.');
-                console.log('id ' + response.id + '.');
-                console.log('Good to see youuuu, ' + response.name + '.');
+                console.log('Res.id ' + response.id + '.');
+                var accessToken;
+                FB.getLoginStatus(function(response) {
+                    if (response.status === 'connected') {
+                        var uid = response.authResponse.userID;
+                        accessToken = response.authResponse.accessToken;
+                        console.log('uid: ', uid);
+                        console.log('accessToken: ', accessToken);
+                        $.get(`840783929399087?fields=${accessToken}`)
+                            .done(function(data) {
+                                console.log('data: ', data);
+                            })
+                            .fail(function(err) {
+                                console.log('err: ', err);
+                            });
+                    } else if (response.status === 'not_authorized') {
+                        // the user is logged in to Facebook,
+                        // but has not authenticated your app
+                    } else {
+                        // the user isn't logged in to Facebook.
+                    }
+                });
+
+
+
             });
         } else {
             console.log('User cancelled login or did not fully authorize.');
@@ -24,19 +47,7 @@ function myFacebookLogin() {
         scope: 'email, user_likes ,publish_actions',
         return_scopes: true
     });
-    FB.getLoginStatus(function(response) {
-      if (response.status === 'connected') {
-        var uid = response.authResponse.userID;
-        var accessToken = response.authResponse.accessToken;
-        console.log('uid: ', uid);
-        console.log('accessToken: ', accessToken);
-      } else if (response.status === 'not_authorized') {
-        // the user is logged in to Facebook,
-        // but has not authenticated your app
-      } else {
-        // the user isn't logged in to Facebook.
-      }
-     });
+
 
     // FB.api('/840783929399087/feed',
     //     'post', {
