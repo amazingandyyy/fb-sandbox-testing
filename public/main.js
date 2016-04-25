@@ -30,8 +30,7 @@ function myFacebookLogin() {
         FB.api('/840783929399087/feed',
             'post', {
                 message: 'Hello, world!'
-            }
-
+            },
             function(response) {
                 if (response && !response.error) {
                     console.log('response.error: ', response.error);
