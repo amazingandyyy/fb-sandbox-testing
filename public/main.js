@@ -16,6 +16,7 @@ function myFacebookLogin() {
         function(response) {
             if (response && !response.error) {
                 console.log('response.error: ', response.error);
+                console.log('response: ', response);
             }
         }
     );
