@@ -38,7 +38,6 @@ function myFacebookLogin() {
             }
         );
     };
-}
 
 function startingAnimation() {
     var intro = $('.intro')
