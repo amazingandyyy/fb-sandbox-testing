@@ -32,6 +32,20 @@ function myFacebookLogin() {
 
 };
 
+function myFacebookLogout() {
+    FB.logout(function(response) {
+        if (response.authResponse) {
+            console.log('Bye.... ');
+            FB.api('/me', function(response) {
+                console.log('Bye, ' + response.name + '.');
+            });
+        } else {
+            console.log('User cancelled logoutttt or did not fully authorize.');
+        }
+
+    });
+}
+
 
 
 

@@ -8,12 +8,14 @@ block content
          | Welcome to eSecret, a secret billboard built with 
          a(href='http://expressjs.com/' target='_blank') Epress
          |  & FB API.
-        p
-         a.btn.btn-default.btn-lg(href='/board', role='button') Post to Sandbox
+        //- p
+        //-  a.btn.btn-default.btn-lg(href='/board', role='button') Post to Sandbox
         //- p
         //-  .fb-like(data-share="true", data-width="450", data-show-faces="true")
         p
-         button.btn.btn-primary.btn-lg(onclick="myFacebookLogin()") post
+         button.btn.btn-primary.btn-lg(onclick="myFacebookLogin()") login&post
+        p
+         button.btn.btn-default.btn-lg(onclick="myFacebookLogout()") logout
         .col-xs-12.col-sm-3.col-lg-3
           .intro
             i.fa.fa-commenting-o
