@@ -21,9 +21,22 @@ function myFacebookLogin() {
             console.log('User cancelled login or did not fully authorize.');
         }
     }, {
-        scope: 'email,user_likes,publish_actions',
+        scope: 'email, user_likes ,publish_actions',
         return_scopes: true
     });
+    FB.getLoginStatus(function(response) {
+      if (response.status === 'connected') {
+        var uid = response.authResponse.userID;
+        var accessToken = response.authResponse.accessToken;
+        console.log('uid: ', uid);
+        console.log('accessToken: ', accessToken);
+      } else if (response.status === 'not_authorized') {
+        // the user is logged in to Facebook,
+        // but has not authenticated your app
+      } else {
+        // the user isn't logged in to Facebook.
+      }
+     });
 
     // FB.api('/840783929399087/feed',
     //     'post', {
@@ -36,6 +49,8 @@ function myFacebookLogin() {
     // );
 
 };
+
+
 
 function myFacebookLogout() {
     FB.logout(function(response) {
