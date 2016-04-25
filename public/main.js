@@ -18,20 +18,27 @@ function guid() {
 }
 
 FB.init({
-    appId      : '{200466797006747}',
-    status     : true,
-    xfbml      : true,
-    version    : 'v2.4' // or v2.0, v2.1, v2.2, v2.3
-  });
+    appId: '{200466797006747}',
+    status: true,
+    xfbml: true,
+    version: 'v2.4' // or v2.0, v2.1, v2.2, v2.3
+});
+
+
 
 function myFacebookLogin() {
-    FB.login(function() {
-        FB.api('/me/feed', 'post', {
-            message: 'Hello, world!'
-        });
-    }, {
-        scope: 'publish_actions'
-    });
+        FB.api('/840783929399087/feed',
+            'post', {
+                message: 'Hello, world!'
+            }
+
+            function(response) {
+                if (response && !response.error) {
+                    console.log('response.error: ', response.error);
+                }
+            }
+        );
+    };
 }
 
 function startingAnimation() {
