@@ -8,6 +8,7 @@ function init() {
 
 
 function myFacebookLogin() {
+    console.log("Clicked");
     FB.api('/840783929399087/feed',
         'post', {
             message: 'Hello, world!'
@@ -19,13 +20,6 @@ function myFacebookLogin() {
         }
     );
 };
-
-
-
-
-
-
-
 
 
 
