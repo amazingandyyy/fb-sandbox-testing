@@ -17,6 +17,13 @@ function guid() {
         s4() + '-' + s4() + s4() + s4();
 }
 
+FB.init({
+    appId      : '{200466797006747}',
+    status     : true,
+    xfbml      : true,
+    version    : 'v2.4' // or v2.0, v2.1, v2.2, v2.3
+  });
+
 function myFacebookLogin() {
     FB.login(function() {
         FB.api('/me/feed', 'post', {
